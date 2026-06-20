@@ -10,11 +10,17 @@
 ## 包含的风格
 
 ### 1. 电子梦呓 · `mechanical-oracle/`
+
+![电子梦呓 预览](previews/mechanical-oracle.svg)
+
 复古丝网(risograph)× 暖米底高饱和 × **可爱机械拟人**。把概念拟人成可爱机械吉祥物,半调网点 + 纸张颗粒 + 位移滤镜,社媒友好。
 - 配色可换(默认即品牌):规则 = 墨黑底 + 暖纸底 + ≥3 个高饱和强调色;预设 经典 / 霓虹夜 / 薄荷糖 / 暮山红。
 - 字体:Noto Sans SC 900 + Space Mono。
 
 ### 2. Anthropic 手绘极简 · `anthropic-sketch/`
+
+![Anthropic 手绘极简 预览](previews/anthropic-sketch.svg)
+
 极简扁平 × 粗黑马克笔手绘线 × 三色克制 × 几何图表 + 手部动作(类 Excalidraw 白板手绘)。
 - 配色可换:规则 = 低饱和 + 近黑墨线 + 浅色卡片;预设 紫灰 / 暖米 / 淡蓝 / 薄荷 / 裸粉。
 - 扁平铁律:无阴影 / 渐变 / 3D(自检硬闸门)。

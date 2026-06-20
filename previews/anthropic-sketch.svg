@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="-apple-system,Segoe UI,Roboto,sans-serif">
+  <rect width="800" height="500" fill="#D6D2E1"/>
+
+  <!-- 标题 + 手绘圈 -->
+  <text x="40" y="60" fill="#111111" font-size="40" font-weight="800">用数据 掌控 趋势</text>
+  <path d="M196 32 C188 16 300 14 306 36 C310 56 210 62 188 40" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+  <text x="40" y="92" fill="#111" opacity="0.7" font-size="16">极简扁平 · 粗黑手绘线 · 几何图表 + 手部动作</text>
+
+  <!-- 主插画卡:折线 + 手 -->
+  <g transform="rotate(-0.5 410 300)">
+    <rect x="40" y="120" width="500" height="300" rx="22" fill="#F3EFE4" stroke="#111" stroke-width="3"/>
+  </g>
+  <g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M86 168 V372 H470" stroke-width="4"/>
+    <g stroke-width="2" opacity="0.28"><path d="M86 320 H470"/><path d="M86 264 H470"/><path d="M86 208 H470"/></g>
+    <path d="M110 348 L178 318 L244 270 L312 292 L386 206 L452 150" stroke-width="5"/>
+    <path d="M452 150 L498 118" stroke-width="4"/><path d="M478 118 L500 114 L498 138" stroke-width="4"/>
+  </g>
+  <g stroke="#111" stroke-width="3.4">
+    <circle cx="178" cy="318" r="7" fill="#F3EFE4"/><circle cx="244" cy="270" r="7" fill="#F3EFE4"/>
+    <circle cx="312" cy="292" r="7" fill="#F3EFE4"/><circle cx="386" cy="206" r="7" fill="#F3EFE4"/>
+    <circle cx="452" cy="150" r="9" fill="#F3EFE4"/>
+  </g>
+  <!-- 简笔手 -->
+  <g stroke="#111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="556" y="332" width="78" height="48" rx="12" fill="#F3EFE4"/>
+    <rect x="550" y="270" width="90" height="74" rx="28" fill="#F3EFE4"/>
+    <path d="M552 300 q-22 -2 -28 12" fill="#F3EFE4"/>
+    <g transform="translate(590,280) rotate(-50)"><rect x="-11" y="-132" width="22" height="140" rx="11" fill="#F3EFE4"/></g>
+  </g>
+
+  <!-- 右侧三步卡片 -->
+  <g>
+    <g transform="rotate(0.6 690 165)"><rect x="576" y="120" width="196" height="86" rx="14" fill="#F3EFE4" stroke="#111" stroke-width="3"/></g>
+    <circle cx="600" cy="120" r="11" fill="#F3EFE4" stroke="#111" stroke-width="3"/>
+    <text x="596" y="158" fill="#111" font-size="19" font-weight="800">01 看懂折线</text>
+    <text x="596" y="184" fill="#111" opacity="0.8" font-size="13">找拐点与异常点</text>
+
+    <g transform="rotate(-0.6 690 270)"><rect x="576" y="224" width="196" height="86" rx="14" fill="#F3EFE4" stroke="#111" stroke-width="3"/></g>
+    <circle cx="600" cy="224" r="11" fill="#F3EFE4" stroke="#111" stroke-width="3"/>
+    <text x="596" y="262" fill="#111" font-size="19" font-weight="800">02 按住节点</text>
+    <text x="596" y="288" fill="#111" opacity="0.8" font-size="13">一次只推一个杠杆</text>
+
+    <g transform="rotate(0.6 690 375)"><rect x="576" y="328" width="196" height="86" rx="14" fill="#F3EFE4" stroke="#111" stroke-width="3"/></g>
+    <circle cx="600" cy="328" r="11" fill="#F3EFE4" stroke="#111" stroke-width="3"/>
+    <text x="596" y="366" fill="#111" font-size="19" font-weight="800">03 往上拉</text>
+    <text x="596" y="392" fill="#111" opacity="0.8" font-size="13">小步调整看反馈</text>
+  </g>
+
+  <!-- 色板 -->
+  <g stroke="#111" stroke-width="2">
+    <rect x="40" y="446" width="44" height="30" fill="#D6D2E1"/><rect x="92" y="446" width="44" height="30" fill="#111111"/><rect x="144" y="446" width="44" height="30" fill="#F3EFE4"/>
+  </g>
+  <text x="200" y="467" fill="#111" opacity="0.7" font-size="14">三色克制 · 配色可换预设</text>
+</svg>
