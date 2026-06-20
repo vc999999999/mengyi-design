@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+  Anthropic 手绘极简 · PPT / 幻灯片 模板（16:9,每页一张 .slide,1280×720）
+  === 用法（本模板专属,读到这里说明你要做 PPT 版）===
+  1. 复制本文件 → 每页改文字与插画。加页:复制一整块 <section class="slide">。
+  2. 页型:封面 / 左图右文 / 三栏要点 / 金句。按内容挑用。
+  3. 卡片不均匀圆角 + 微旋转;正文 Noto Sans,标题手写体。
+  铁律:无阴影、无渐变、无 3D,背景纯色 #D6D2E1。
+  导出 PPT:打印 →「横向」「无边距」「背景图形」开 → 存 PDF(每页一张);或对每个 .slide 截 PNG。
+  自检:python scripts/check_style.py 这个文件
+-->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* 换配色:只改下面三个变量(预设见 references/style-core.md)。规则:低饱和、近黑墨色+浅卡片。
+     暖米 #EDE7DA/#14110E/#FBF7EE · 淡蓝 #DCE3EE/#11151B/#F4F7FB · 薄荷 #DCE7E0/#101512/#F2F8F4 · 裸粉 #ECE0DD/#1A1210/#FBF1EE */
+  :root{--bg:#D6D2E1;--ink:#111111;--cream:#F3EFE4;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#bdb8cc;font-family:'Noto Sans SC',sans-serif;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:26px;padding:30px;}
+  .hand{font-family:'ZCOOL KuaiLe',cursive;} .mk{font-family:'Kalam',cursive;}
+  .slide{position:relative;width:1280px;height:720px;background:var(--bg);overflow:hidden;flex:none;padding:64px 72px;}
+  .eyebrow{font-family:'Kalam',cursive;font-size:20px;color:rgba(17,17,17,.6);letter-spacing:.06em;}
+  .circled{position:relative;display:inline-block;padding:0 6px;}
+  .circled .anno{position:absolute;left:-12px;top:-8px;width:calc(100% + 24px);height:calc(100% + 16px);overflow:visible;}
+
+  /* 封面 */
+  .cover{display:flex;flex-direction:column;justify-content:center;}
+  .cover h1{font-family:'ZCOOL KuaiLe',cursive;font-size:96px;line-height:1.12;margin:14px 0 0;}
+  .cover .sub{font-size:24px;line-height:1.7;color:rgba(17,17,17,.78);margin-top:24px;max-width:760px;}
+  .cover .deco{position:absolute;right:80px;bottom:70px;width:360px;height:300px;}
+
+  /* 左图右文 */
+  .split{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;height:100%;align-items:center;}
+  .pic{background:var(--cream);border:2.5px solid var(--ink);border-radius:24px 14px 26px 12px / 12px 26px 14px 24px;padding:18px;transform:rotate(-.4deg);}
+  .pic svg{display:block;width:100%;height:auto;}
+  .txt h2{font-family:'ZCOOL KuaiLe',cursive;font-size:52px;line-height:1.15;margin-bottom:20px;}
+  .txt p{font-size:21px;line-height:1.85;color:rgba(17,17,17,.82);}
+
+  /* 三栏要点 */
+  .head h2{font-family:'ZCOOL KuaiLe',cursive;font-size:52px;}
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+  .box{background:var(--cream);border:2.5px solid var(--ink);border-radius:18px 11px 20px 10px / 10px 20px 11px 18px;padding:28px 26px;position:relative;}
+  .box:nth-child(odd){transform:rotate(-.5deg)} .box:nth-child(even){transform:rotate(.5deg)}
+  .box .node{position:absolute;top:-14px;left:22px;width:26px;height:26px;border-radius:50%;background:var(--cream);border:2.5px solid var(--ink);}
+  .box .num{font-family:'Kalam',cursive;font-weight:700;font-size:18px;color:rgba(17,17,17,.55);}
+  .box h3{font-family:'ZCOOL KuaiLe',cursive;font-size:28px;margin:4px 0 10px;}
+  .box p{font-size:17px;line-height:1.75;color:rgba(17,17,17,.82);}
+
+  /* 金句 */
+  .quote{display:flex;align-items:center;justify-content:center;gap:40px;text-align:left;height:100%;}
+  .quote svg{flex:none;width:160px;height:160px;}
+  .quote .q{font-family:'ZCOOL KuaiLe',cursive;font-size:48px;line-height:1.5;}
+  @media print{@page{size:1280px 720px;margin:0}body{background:#fff;gap:0;padding:0}.slide{page-break-after:always;break-after:page}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+  </filter>
+</defs></svg>
+
+<!-- 封面 -->
+<section class="slide cover">
+  <div class="eyebrow">A FIELD GUIDE · 数据决策</div>
+  <h1>用数据<span class="circled">掌控<svg class="anno" viewBox="0 0 260 90" preserveAspectRatio="none"><g filter="url(#sketch)"><path d="M22 50 C18 18 238 12 246 46 C250 76 34 84 14 52" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/></g></svg></span>趋势</h1>
+  <div class="sub">看懂折线、按住节点、把它往你要的方向拉。</div>
+  <svg class="deco" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#sketch)" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M50 60 V270 H410" stroke-width="4"/>
+      <path d="M78 236 L152 210 L216 158 L288 184 L358 100" stroke-width="5"/>
+      <path d="M358 100 L406 66" stroke-width="4"/><path d="M386 66 L408 62 L406 86" stroke-width="4"/>
+    </g>
+    <g filter="url(#sketch)" stroke="#111" stroke-width="3.4">
+      <circle cx="152" cy="210" r="7" fill="#F3EFE4"/><circle cx="216" cy="158" r="7" fill="#F3EFE4"/>
+      <circle cx="288" cy="184" r="7" fill="#F3EFE4"/><circle cx="358" cy="100" r="9" fill="#F3EFE4"/>
+    </g>
+    <g filter="url(#sketch)" stroke="#111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="384" y="206" width="62" height="42" rx="11" fill="#F3EFE4"/>
+      <rect x="378" y="154" width="72" height="62" rx="22" fill="#F3EFE4"/>
+      <g transform="translate(410,162) rotate(-50)"><rect x="-9" y="-108" width="18" height="114" rx="9" fill="#F3EFE4"/></g>
+    </g>
+  </svg>
+</section>
+
+<!-- 左图右文 -->
+<section class="slide">
+  <div class="split">
+    <div class="pic">
+      <svg viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#sketch)" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 60 V320 H500" stroke-width="4"/>
+          <path d="M90 280 L180 250 L260 200 L350 224 L440 130" stroke-width="5"/>
+          <path d="M440 130 L494 92" stroke-width="4"/><path d="M472 92 L496 88 L494 112" stroke-width="4"/>
+        </g>
+        <g filter="url(#sketch)" stroke="#111" stroke-width="3.4">
+          <circle cx="180" cy="250" r="8" fill="#F3EFE4"/><circle cx="260" cy="200" r="8" fill="#F3EFE4"/>
+          <circle cx="350" cy="224" r="8" fill="#F3EFE4"/><circle cx="440" cy="130" r="10" fill="#F3EFE4"/>
+        </g>
+      </svg>
+    </div>
+    <div class="txt">
+      <h2>趋势是被<br>「拉」出来的</h2>
+      <p>没人能预测每一个拐点;但你可以按住一个能动的节点,小步调整、看反馈,把折线一次次往你要的方向拉。掌控,来自动手。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 三栏要点 -->
+<section class="slide">
+  <div class="head"><h2>三步上手</h2></div>
+  <div class="cols">
+    <div class="box"><span class="node"></span><div class="num">01</div><h3>看懂折线</h3><p>找拐点和异常点,趋势的故事藏在转折里。</p></div>
+    <div class="box"><span class="node"></span><div class="num">02</div><h3>按住节点</h3><p>挑出真正能动的变量,一次只推一个杠杆。</p></div>
+    <div class="box"><span class="node"></span><div class="num">03</div><h3>往上拉</h3><p>调整→看反馈→再调,微调拉出趋势。</p></div>
+  </div>
+</section>
+
+<!-- 金句 -->
+<section class="slide">
+  <div class="quote">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g filter="url(#sketch)" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 90 L46 64 L66 78 L98 36"/><path d="M84 36 L100 32 L98 50"/>
+      <circle cx="46" cy="64" r="6" fill="#F3EFE4"/><circle cx="98" cy="36" r="7" fill="#F3EFE4"/>
+    </g></svg>
+    <div class="q">数据不是用来「看」的,<br>是用来「拉」的。</div>
+  </div>
+</section>
+
+</body>
+</html>

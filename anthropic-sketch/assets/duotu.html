@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+  Anthropic 手绘极简 · 多图版 / 轮播卡（每张 3:4,540×720,导出 2x = 1080×1440,小红书/九宫格）
+  === 用法（本模板专属,读到这里说明你要做多图版）===
+  1. 复制本文件 → 每张 <section class="card"> 改文字与插画。
+  2. 张数:封面 1 + 内容 2~5 + 收尾 1,常见 4~7 张。复制整块 <section class="card"> 增减。
+  3. 每张:页码 + 一个核心元素(封面=标题+手绘圈+小插画;内容=要点;收尾=金句)。留白要大。
+  4. 想换 AI 图:把内置 <svg> 换成 <img>(见 illustration-prompts.md)。
+  铁律:无阴影、无渐变、无 3D,背景纯色 #D6D2E1。
+  导出:对每个 .card 截图(2x DPI)。  自检:python scripts/check_style.py 这个文件
+-->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* 换配色:只改下面三个变量(预设见 references/style-core.md)。规则:低饱和、近黑墨色+浅卡片。
+     暖米 #EDE7DA/#14110E/#FBF7EE · 淡蓝 #DCE3EE/#11151B/#F4F7FB · 薄荷 #DCE7E0/#101512/#F2F8F4 · 裸粉 #ECE0DD/#1A1210/#FBF1EE */
+  :root{--bg:#D6D2E1;--ink:#111111;--cream:#F3EFE4;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#bdb8cc;font-family:'Noto Sans SC',sans-serif;color:var(--ink);
+    display:flex;flex-wrap:wrap;gap:24px;justify-content:center;padding:30px;}
+  .card{position:relative;width:540px;height:720px;background:var(--bg);overflow:hidden;padding:44px 40px;flex:none;display:flex;flex-direction:column;}
+  .hand{font-family:'ZCOOL KuaiLe',cursive;} .mk{font-family:'Kalam',cursive;}
+  .page{position:absolute;right:32px;top:30px;font-family:'Kalam',cursive;font-weight:700;font-size:16px;color:rgba(17,17,17,.5);}
+  .eyebrow{font-family:'Kalam',cursive;font-size:16px;color:rgba(17,17,17,.6);letter-spacing:.06em;}
+
+  /* 封面 */
+  .ttl{font-family:'ZCOOL KuaiLe',cursive;font-size:52px;line-height:1.2;margin-top:10px;}
+  .circled{position:relative;display:inline-block;padding:0 4px;}
+  .circled .anno{position:absolute;left:-10px;top:-8px;width:calc(100% + 20px);height:calc(100% + 16px);overflow:visible;}
+  .sub{font-size:16px;line-height:1.8;color:rgba(17,17,17,.78);margin-top:16px;}
+  .herobox{margin-top:auto;background:var(--cream);border:2.5px solid var(--ink);border-radius:20px 12px 22px 10px / 10px 22px 12px 20px;padding:12px;}
+  .herobox svg{display:block;width:100%;height:auto;}
+
+  /* 内容卡 */
+  .sec{font-family:'ZCOOL KuaiLe',cursive;font-size:34px;margin:6px 0 4px;}
+  .pts{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .pt{background:var(--cream);border:2.5px solid var(--ink);border-radius:16px 10px 18px 9px / 9px 18px 10px 16px;padding:18px 20px;position:relative;}
+  .pt:nth-child(odd){transform:rotate(-.5deg)} .pt:nth-child(even){transform:rotate(.5deg)}
+  .pt .node{position:absolute;top:-12px;left:18px;width:22px;height:22px;border-radius:50%;background:var(--cream);border:2.5px solid var(--ink);}
+  .pt h3{font-family:'ZCOOL KuaiLe',cursive;font-size:23px;margin-bottom:6px;}
+  .pt p{font-size:15px;line-height:1.75;color:rgba(17,17,17,.82);}
+
+  /* 收尾金句 */
+  .end{justify-content:center;align-items:center;text-align:center;}
+  .end .q{font-family:'ZCOOL KuaiLe',cursive;font-size:40px;line-height:1.5;}
+  .end svg{width:120px;height:120px;margin-bottom:24px;}
+  @media print{@page{size:540px 720px;margin:0}body{background:#fff;gap:0;padding:0}.card{page-break-after:always;break-after:page}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+  </filter>
+</defs></svg>
+
+<!-- ① 封面卡 -->
+<section class="card">
+  <span class="page">01 / 04</span>
+  <div class="eyebrow">A FIELD GUIDE · 数据决策</div>
+  <div class="ttl">用数据<br><span class="circled">掌控<svg class="anno" viewBox="0 0 220 80" preserveAspectRatio="none"><g filter="url(#sketch)"><path d="M20 44 C16 16 200 10 206 40 C210 66 30 74 12 46" fill="none" stroke="#111" stroke-width="3.2" stroke-linecap="round"/></g></svg></span>趋势</div>
+  <div class="sub">看懂折线、按住节点、把它往你要的方向拉。</div>
+  <div class="herobox">
+    <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <g filter="url(#sketch)" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50 50 V250 H410" stroke-width="4"/>
+        <path d="M76 220 L150 196 L214 150 L286 172 L356 96" stroke-width="5"/>
+        <path d="M356 96 L404 64" stroke-width="4"/><path d="M384 64 L406 60 L404 84" stroke-width="4"/>
+      </g>
+      <g filter="url(#sketch)" stroke="#111" stroke-width="3.4">
+        <circle cx="150" cy="196" r="7" fill="#F3EFE4"/><circle cx="214" cy="150" r="7" fill="#F3EFE4"/>
+        <circle cx="286" cy="172" r="7" fill="#F3EFE4"/><circle cx="356" cy="96" r="9" fill="#F3EFE4"/>
+      </g>
+      <g filter="url(#sketch)" stroke="#111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="384" y="200" width="60" height="40" rx="10" fill="#F3EFE4"/>
+        <rect x="378" y="150" width="70" height="60" rx="22" fill="#F3EFE4"/>
+        <g transform="translate(408,158) rotate(-50)"><rect x="-9" y="-104" width="18" height="110" rx="9" fill="#F3EFE4"/></g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ② 内容卡 -->
+<section class="card">
+  <span class="page">02 / 04</span>
+  <div class="eyebrow mk">STEP 01</div>
+  <div class="sec">看懂折线</div>
+  <div class="pts">
+    <div class="pt"><span class="node"></span><h3>找拐点</h3><p>别盯着涨跌,趋势的故事都藏在转折和异常点里。</p></div>
+    <div class="pt"><h3>剔噪声</h3><p>分清真信号和随机波动,先把噪声放一边。</p></div>
+  </div>
+</section>
+
+<!-- ③ 内容卡 -->
+<section class="card">
+  <span class="page">03 / 04</span>
+  <div class="eyebrow mk">STEP 02 · 03</div>
+  <div class="sec">按住 &amp; 上拉</div>
+  <div class="pts">
+    <div class="pt"><span class="node"></span><h3>按住一个节点</h3><p>挑出真正能动的那个变量,一次只推一个杠杆。</p></div>
+    <div class="pt"><h3>小步往上拉</h3><p>调整→看反馈→再调,趋势是一次次微调拉出来的。</p></div>
+  </div>
+</section>
+
+<!-- ④ 收尾金句 -->
+<section class="card end">
+  <span class="page">04 / 04</span>
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g filter="url(#sketch)" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 90 L46 64 L66 78 L98 36"/><path d="M84 36 L100 32 L98 50"/>
+    <circle cx="46" cy="64" r="6" fill="#F3EFE4"/><circle cx="98" cy="36" r="7" fill="#F3EFE4"/>
+  </g></svg>
+  <div class="q">数据不是用来「看」的,<br>是用来「拉」的。</div>
+</section>
+
+</body>
+</html>

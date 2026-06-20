@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+  Anthropic 手绘极简 · 长图版（竖向单图,宽 860,高度随内容）
+  === 用法（本模板专属,读到这里说明你要做长图版）===
+  1. 复制本文件 → 只改带「改:」的地方;别动三色/字体/#sketch 滤镜/扁平结构。
+  2. 结构 = 眉标 + 大标题(可给一个词加手绘圈) → 主插画(几何图表+手) → 若干米白卡片(手绘箭头相连) → 收尾。
+  3. 卡片用不均匀圆角 + 微旋转模拟手作;正文用 Noto Sans 保证可读,标题/标签才用手写体。
+  4. 主插画:内置「手把上升折线往上拉」的 SVG,改造它(换图表/换手势)即可;或把整块 <svg class="hero"> 换成 <img class="hero" src="图.png">。
+  铁律:无阴影、无渐变、无 3D。背景永远纯色 #D6D2E1。
+  导出：浏览器打开 → 打印为 PDF(无边距),或对 .poster 截一张长图 PNG(2x DPI)。
+  自检：python scripts/check_style.py 这个文件
+-->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* 换配色:只改下面三个变量(预设见 references/style-core.md)。规则:低饱和、近黑墨色+浅卡片。
+     暖米 #EDE7DA/#14110E/#FBF7EE · 淡蓝 #DCE3EE/#11151B/#F4F7FB · 薄荷 #DCE7E0/#101512/#F2F8F4 · 裸粉 #ECE0DD/#1A1210/#FBF1EE */
+  :root{--bg:#D6D2E1;--ink:#111111;--cream:#F3EFE4;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#bdb8cc;display:flex;justify-content:center;padding:30px;font-family:'Noto Sans SC',sans-serif;color:var(--ink);}
+  .poster{position:relative;width:860px;background:var(--bg);overflow:hidden;padding:46px 46px 40px;}
+  .hand{font-family:'ZCOOL KuaiLe',cursive;}  /* 手写体标题 */
+  .mk{font-family:'Kalam',cursive;}           /* 马克笔英文/数字 */
+
+  .eyebrow{font-family:'Kalam',cursive;font-size:17px;letter-spacing:.06em;color:rgba(17,17,17,.6);margin-bottom:8px;}
+  .title{font-family:'ZCOOL KuaiLe',cursive;font-size:60px;line-height:1.18;color:var(--ink);}
+  .circled{position:relative;display:inline-block;padding:0 6px;}
+  .circled .anno{position:absolute;left:-10px;top:-8px;width:calc(100% + 20px);height:calc(100% + 16px);overflow:visible;}
+  .dek{font-size:17px;line-height:1.8;color:rgba(17,17,17,.78);max-width:600px;margin-top:18px;}
+
+  /* 主插画卡 */
+  .hero-wrap{background:var(--cream);border:2.5px solid var(--ink);border-radius:22px 14px 24px 12px / 12px 24px 14px 22px;margin:30px 0 8px;padding:14px;}
+  .hero{display:block;width:100%;height:auto;}
+
+  /* 区块标题 */
+  .sec{font-family:'ZCOOL KuaiLe',cursive;font-size:30px;margin:34px 0 4px;}
+  .sec .mk{font-size:20px;color:rgba(17,17,17,.55);margin-right:8px;}
+
+  /* 卡片行 */
+  .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:stretch;margin-top:18px;}
+  .card{background:var(--cream);border:2.5px solid var(--ink);padding:20px 20px 22px;
+    border-radius:16px 10px 18px 9px / 9px 18px 10px 16px;position:relative;}
+  .row .card:nth-child(odd){transform:rotate(-.5deg)} .row .card:nth-child(even){transform:rotate(.5deg)}
+  .card .num{font-family:'Kalam',cursive;font-weight:700;font-size:16px;color:rgba(17,17,17,.55);}
+  .card h3{font-family:'ZCOOL KuaiLe',cursive;font-size:21px;margin:4px 0 8px;}
+  .card p{font-size:14.5px;line-height:1.8;color:rgba(17,17,17,.82);}
+  .node{position:absolute;top:-13px;left:18px;width:24px;height:24px;border-radius:50%;background:var(--cream);border:2.5px solid var(--ink);}
+
+  /* 大号要点卡 */
+  .callout{background:var(--cream);border:3px solid var(--ink);border-radius:20px 12px 22px 10px / 10px 22px 12px 20px;
+    padding:24px 28px;margin-top:26px;display:flex;gap:20px;align-items:center;transform:rotate(-.3deg);}
+  .callout .big{font-family:'ZCOOL KuaiLe',cursive;font-size:24px;line-height:1.5;}
+  .callout svg{flex:none;width:96px;height:96px;}
+
+  .foot{font-family:'Kalam',cursive;font-size:14px;color:rgba(17,17,17,.5);margin-top:34px;display:flex;justify-content:space-between;}
+  @media print{@page{margin:0}body{background:#fff;padding:0}.poster{width:100%}}
+</style>
+</head>
+<body>
+
+<!-- 唯一滤镜:手绘抖动。别删 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+  </filter>
+</defs></svg>
+
+<div class="poster">
+
+  <div class="eyebrow">A FIELD GUIDE · 数据决策</div> <!-- 改:眉标 -->
+  <!-- 大标题:给一个词套手绘圈 -->
+  <h1 class="title">用数据<span class="circled">掌控<svg class="anno" viewBox="0 0 220 80" preserveAspectRatio="none"><g filter="url(#sketch)"><path d="M20 44 C16 16 200 10 206 40 C210 66 30 74 12 46" fill="none" stroke="#111" stroke-width="3.2" stroke-linecap="round"/></g></svg></span>趋势</h1> <!-- 改:标题 -->
+  <p class="dek">不是被趋势推着走,而是看懂折线、按住节点、把它往你要的方向拉。三步,把数据变成你手里的工具。</p> <!-- 改:导语 -->
+
+  <!-- 主插画:手把上升折线往上拉(几何 + 手) -->
+  <div class="hero-wrap">
+    <svg class="hero" viewBox="0 0 820 420" xmlns="http://www.w3.org/2000/svg">
+      <!-- 坐标轴 + 网格 -->
+      <g filter="url(#sketch)" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M96 78 V358 H560" stroke-width="4"/>
+        <g stroke-width="2" opacity=".28"><path d="M96 296 H560"/><path d="M96 214 H560"/><path d="M96 140 H560"/></g>
+        <!-- 折线 -->
+        <path d="M120 332 L196 300 L268 248 L344 278 L424 182 L516 122" stroke-width="5"/>
+        <!-- 趋势箭头继续向上 -->
+        <path d="M516 122 L576 80" stroke-width="4"/><path d="M552 80 L578 76 L576 104" stroke-width="4"/>
+      </g>
+      <!-- 数据节点(米白) -->
+      <g filter="url(#sketch)" stroke="#111" stroke-width="3.4">
+        <circle cx="120" cy="332" r="8" fill="#F3EFE4"/><circle cx="196" cy="300" r="8" fill="#F3EFE4"/>
+        <circle cx="268" cy="248" r="8" fill="#F3EFE4"/><circle cx="344" cy="278" r="8" fill="#F3EFE4"/>
+        <circle cx="424" cy="182" r="8" fill="#F3EFE4"/><circle cx="516" cy="122" r="11" fill="#F3EFE4"/>
+      </g>
+      <!-- 手:伸向折线顶点把它往上拉 -->
+      <g filter="url(#sketch)" stroke="#111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="638" y="322" width="92" height="56" rx="14" fill="#F3EFE4"/>            <!-- 袖口 -->
+        <rect x="632" y="250" width="102" height="88" rx="32" fill="#F3EFE4"/>           <!-- 手掌 -->
+        <path d="M634 288 q-26 -2 -32 14" fill="#F3EFE4"/>                               <!-- 拇指 -->
+        <g transform="translate(676,262) rotate(-50)"><rect x="-12" y="-156" width="24" height="164" rx="12" fill="#F3EFE4"/></g> <!-- 食指伸出 -->
+        <g stroke-width="3" opacity=".6"><path d="M656 270 h52"/><path d="M656 286 h56"/></g> <!-- 指节线 -->
+      </g>
+    </svg>
+  </div>
+
+  <!-- 三步卡片(手绘节点 + 箭头) -->
+  <div class="sec"><span class="mk">HOW</span>三步上手</div> <!-- 改 -->
+  <div class="row">
+    <div class="card"><span class="node"></span><div class="num">01</div><h3>看懂折线</h3><p>先别管涨跌,找到拐点和异常点——趋势的故事都藏在转折里。</p></div> <!-- 改 -->
+    <div class="card"><span class="node"></span><div class="num">02</div><h3>按住节点</h3><p>挑出真正能动的那个变量,其余先放下。一次只推一个杠杆。</p></div>
+    <div class="card"><span class="node"></span><div class="num">03</div><h3>往上拉</h3><p>小步调整、看反馈、再调。趋势是被你一次次微调拉出来的。</p></div>
+  </div>
+
+  <!-- 要点卡 + 小插画 -->
+  <div class="callout">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g filter="url(#sketch)" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 90 L46 64 L66 78 L98 36"/><path d="M84 36 L100 32 L98 50"/>
+      <circle cx="46" cy="64" r="6" fill="#F3EFE4"/><circle cx="98" cy="36" r="7" fill="#F3EFE4"/>
+    </g></svg>
+    <div class="big">一句话:数据不是用来「看」的,<br>是用来「拉」的。</div> <!-- 改:金句 -->
+  </div>
+
+  <div class="foot"><span class="hand">数据决策 · 手绘指南</span><span>made in Excalidraw-style</span></div>
+</div>
+
+</body>
+</html>

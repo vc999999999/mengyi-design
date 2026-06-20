@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+  电子梦呓 · PPT / 幻灯片 模板（16:9,每页一张 .slide,1280×720）
+  用法：复制本文件 → 每页改文字/分类色/标题变异字/插画 → 不动色板/字体/滤镜/颗粒。
+  加页：复制一整块 <section class="slide">…</section>。
+  导出 PPT：浏览器打开 → 打印 → 「横向」「无边距」「背景图形」打开 → 存为 PDF(每页一张幻灯片);
+            或对每个 .slide 截 PNG 插进任意演示软件。
+  铁律：每页只一处怪诞,正文规整可读。
+-->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* 换配色:改下面六个主色(预设见 references/style-core.md)。规则:墨黑底+暖纸底+≥3 高饱和强调色。
+     霓虹夜 #0E0E18/#ECE6D6/#2348E0/#F7D108/#FF4D1A/#FF3D8B · 薄荷糖 #12130E/#EFE9D6/#1FA8C4/#F2C20B/#E5482A/#E85FA0 */
+  :root{--ink:#100E0C;--paper:#ECE0C4;--blue:#1B46D4;--yellow:#F5C20B;--red:#E5341D;--magenta:#E8356F;--dim:#7a6f59;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#2a261f;font-family:'Noto Sans SC',sans-serif;color:var(--ink);
+    display:flex;flex-direction:column;align-items:center;gap:26px;padding:30px;}
+  .mono{font-family:'Space Mono',monospace;}
+  .slide{position:relative;width:1280px;height:720px;background:var(--paper);overflow:hidden;
+    border:3px solid var(--ink);flex:none;}
+  .grain{position:absolute;inset:0;z-index:99;pointer-events:none;mix-blend-mode:multiply;opacity:.12;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");}
+  /* 刊头条(每页顶部) */
+  .bar{display:flex;justify-content:space-between;padding:18px 46px;font-family:'Space Mono',monospace;
+    font-size:13px;letter-spacing:.16em;color:var(--dim);border-bottom:2px solid var(--ink);}
+  .tab{font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.12em;
+    color:var(--paper);padding:4px 10px;}
+
+  /* 封面页 */
+  .cover{background:var(--ink);color:var(--paper);}
+  .cover .bar{color:var(--dim);border-color:#2a2620;}
+  .cover .big{font-size:128px;line-height:.9;font-weight:900;padding:60px 46px 0;filter:url(#warp);}
+  .cover .big .mut{display:inline-block;transform:scaleY(1.45);transform-origin:bottom;color:var(--magenta);}
+  .cover .big .hi{color:var(--yellow);}
+  .cover .sub{padding:30px 46px 0;font-size:22px;line-height:1.7;color:#cdbf9f;max-width:760px;}
+  .cover .eyes{position:absolute;right:60px;top:120px;width:260px;height:300px;filter:url(#ooze);}
+  .cover .eye{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+  /* 内容页 */
+  .head{padding:30px 46px 0;}
+  .head .t{font-size:52px;font-weight:900;line-height:1;filter:url(#warp);}
+  .head .t .mut{display:inline-block;transform:scaleY(1.35);transform-origin:bottom;color:var(--magenta);}
+  .head .line{height:3px;background:var(--ink);margin:18px 0 0;}
+  .content{padding:30px 46px;}
+  .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .box{border:2px solid var(--ink);background:#fff;padding:24px 26px;position:relative;overflow:hidden;}
+  .box.dark{background:var(--ink);color:var(--paper);}
+  .box .dots{position:absolute;right:-12px;bottom:-12px;width:90px;height:90px;opacity:.45;
+    background-image:radial-gradient(currentColor 1.2px,transparent 1.5px);background-size:7px 7px;}
+  .box .k{font-family:'Space Mono',monospace;font-size:13px;color:var(--blue);letter-spacing:.08em;}
+  .box.dark .k{color:var(--yellow);}
+  .box h3{font-size:26px;font-weight:900;margin:6px 0 12px;}
+  .box p{font-size:17px;line-height:1.75;}
+  /* 左图右文页 */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;height:calc(720px - 60px);}
+  .split .pic{position:relative;border-right:3px solid var(--ink);background:var(--ink);overflow:hidden;filter:url(#warp);}
+  .split .pic img{width:100%;height:100%;object-fit:cover;display:block}
+  .split .pic .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--dim);
+    font-family:'Space Mono',monospace;font-size:14px;text-align:center;line-height:1.9;padding:30px;
+    background:repeating-linear-gradient(45deg,#1a1714 0 14px,#100E0C 14px 28px);}
+  .split .txt{padding:48px 46px;display:flex;flex-direction:column;justify-content:center;}
+  .split .txt h2{font-size:44px;font-weight:900;line-height:1.05;margin-bottom:20px;}
+  .split .txt p{font-size:19px;line-height:1.8;color:#3a342a;}
+  .quote{background:var(--magenta);color:var(--paper);border:2px solid var(--ink);padding:30px 36px;
+    font-size:30px;font-weight:700;line-height:1.5;}
+
+  @media print{@page{size:1280px 720px;margin:0}body{background:#fff;gap:0;padding:0}
+    .slide{border:none;page-break-after:always;break-after:page}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="warp"><feTurbulence type="fractalNoise" baseFrequency="0.014 0.022" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="11"/></filter>
+  <filter id="ooze"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.04" numOctaves="3" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9"/></filter>
+</defs></svg>
+
+<!-- ===== 封面 ===== -->
+<section class="slide cover">
+  <div class="grain"></div>
+  <div class="bar"><span>电子梦呓 / DIGITAL REVERIE</span><span>NO.012 · 科普</span></div>
+  <div class="eyes">
+    <div class="eye" style="right:30px;top:0;width:120px;height:120px;background:var(--yellow)"><div style="width:46px;height:46px;border-radius:50%;background:var(--ink)"></div></div>
+    <div class="eye" style="right:130px;top:90px;width:78px;height:78px;background:var(--magenta)"><div style="width:28px;height:28px;border-radius:50%;background:var(--paper)"></div></div>
+    <div class="eye" style="right:20px;top:160px;width:56px;height:56px;background:var(--blue)"><div style="width:20px;height:20px;border-radius:50%;background:var(--yellow)"></div></div>
+  </div>
+  <div class="big">注意力<span class="mut">机</span><span class="hi">制</span></div> <!-- 改：主标题,只一个字变异 -->
+  <div class="sub">把模型「往哪看」拟人成一尊多眼神祇——五页讲清注意力到底在算什么。</div> <!-- 改 -->
+</section>
+
+<!-- ===== 内容页:三栏 ===== -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="bar"><span>电子梦呓 / DIGITAL REVERIE</span><span class="tab" style="background:var(--blue)">科普 / EXPLAIN</span></div>
+  <div class="head"><div class="t">它到底在<span class="mut">算</span>什么</div><div class="line"></div></div> <!-- 改 -->
+  <div class="content">
+    <div class="cols3">
+      <div class="box"><div class="dots"></div><div class="k">STEP 01</div><h3>打分</h3><p>每个词去问其余所有词:你跟我多相关?Q·K 点积得相似度。</p></div> <!-- 改 -->
+      <div class="box"><div class="dots"></div><div class="k">STEP 02</div><h3>归一</h3><p>softmax 把分数压成一组和为 1 的权重——这就是「注意力」。</p></div>
+      <div class="box dark"><div class="dots"></div><div class="k">STEP 03</div><h3>加权</h3><p>用权重去加权 Value,重要的词贡献多,得到这个词的新表示。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 内容页:左图右文 ===== -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="split">
+    <div class="pic">
+      <!-- 出好图后换成 <img src="你的图.png"> -->
+      <div class="ph">用 illustration-prompts.md 出图<br>替换此处 &lt;img&gt;<br><br>注意力机制 → 多眼凝视的机械神祇</div>
+    </div>
+    <div class="txt">
+      <h2>为什么它比 RNN 强</h2> <!-- 改 -->
+      <p>RNN 像一路传话,远的词信息会衰减;注意力让任意两个词一步直连,长程依赖不丢。这就是 Transformer 起飞的底层原因。</p> <!-- 改 -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== 金句页 ===== -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="bar"><span>电子梦呓 / DIGITAL REVERIE</span><span class="tab" style="background:var(--magenta)">金句 / QUOTE</span></div>
+  <div class="content" style="height:calc(720px - 62px);display:flex;align-items:center">
+    <div class="quote">「模型不是读完全文,<br>而是每个字都在问:我现在该看谁?」</div> <!-- 改 -->
+  </div>
+</section>
+
+</body>
+</html>
