@@ -3,7 +3,7 @@
 我的视觉风格 Claude Skill 集合。每个 skill 把「内容」套进一套固定风格,产出**可直接发社交媒体/文档/演示的成品**(长图、多图轮播、PPT 幻灯片,均为 HTML,可导出 PNG/PDF),并附 AI 出图 / 出视频提示词。
 
 每个 skill 都是一条**可决策、可验证、可恢复、可交接**的工作流,而不是一段 prompt:
-- **决策表**:先判断要做哪种产物(长图 / 多图 / PPT / 插图 / 视频),按需只读对应文件(渐进式上下文)。
+- **决策表**:先判断要做哪种产物(长图 / 多图 / PPT / 插图 / **文章插画** / 视频),按需只读对应文件(渐进式上下文)。其中「文章插画」分支**不套任何版式**——只锁风格,构图交给文章内容 + AI 自由发挥。
 - **风格契约**:色板 / 字体 / 质感代码 / 锚点结构,统一来源,保证成系列。
 - **自检闸门**:`scripts/check_style.py` 客观校验出图是否达标(配色规则、字体、质感、风格铁律),有 FAIL 必须改到通过再交付。
 
@@ -49,7 +49,8 @@ skills/<skill>/
 ├── LICENSE.txt
 ├── references/
 │   ├── style-core.md             风格契约(色板/字体/质感/锚点)
-│   ├── illustration-prompts.md   AI 出图提示词(中+英)
+│   ├── illustration-prompts.md   套版图位提示词(固定主体公式)
+│   ├── article-illustration.md   文章插画提示词(只锁风格,AI 自由构图)
 │   └── video-prompts.md          AI 出视频提示词(中+英,图生/文生)
 ├── assets/
 │   ├── changtu.html              长图版模板
@@ -89,6 +90,4 @@ python skills/<skill>/scripts/check_style.py 你的产出.html
 
 ## 新增一套风格
 
-1. 在 `skills/` 下复制一个现有 skill 当骨架,改 `SKILL.md` + `references/style-core.md` + 三个模板 + `check_style.py`。
-2. 在 `.claude-plugin/marketplace.json` 的 `skills` 数组里加上 `"./skills/你的新风格"`。
-3. 给 README 配一张 `previews/` 预览图。
+照 [`template/`](template/) 里的脚手架与步骤来:拷骨架 → 改风格契约 → 改各分支与自检 → 登记进 `marketplace.json` → 配预览图。详见 [template/README.md](template/README.md)。

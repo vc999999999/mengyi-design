@@ -28,7 +28,8 @@ description: >
 | 长图 / 公众号配图 / 知识卡 / 示意图 / 海报 | **长图版** | `assets/changtu.html` | 竖向单图,导出 1 张长 PNG |
 | 多图 / 九宫格 / 轮播 / 小红书 / 一组卡 | **多图版** | `assets/duotu.html` | 多张 3:4 卡,各自导出 |
 | PPT / 幻灯片 / 演示 | **PPT 版** | `assets/deck.html` | 16:9 多页,导出 PDF |
-| 配图提示词 / 出图 / 要张手绘插画 | **插图提示词** | `references/illustration-prompts.md` | 中+英 AI 提示词 |
+| 配图提示词(套版图位用,固定主体公式) | **插图提示词** | `references/illustration-prompts.md` | 中+英 AI 提示词 |
+| 文章插画 / 文章配图 / 题图(不限版式,AI 自由构图) | **文章插画** | `references/article-illustration.md` | 中+英 AI 提示词(只锁风格) |
 | 视频 / 短视频 / 动态 / 白板讲解动画 | **视频版** | `references/video-prompts.md` | 中+英 AI 视频提示词(图生/文生) |
 
 每个 HTML 模板**顶部注释**写了该模式的专属用法(改哪里、张数、导出方式)——打开即见,渐进式上下文,无需别处再记。
