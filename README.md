@@ -9,7 +9,7 @@
 
 ## 包含的风格
 
-### 1. 电子梦呓 · `mechanical-oracle/`
+### 1. 电子梦呓 · `skills/mechanical-oracle/`
 
 ![电子梦呓 预览](previews/mechanical-oracle.svg)
 
@@ -17,7 +17,7 @@
 - 配色可换(默认即品牌):规则 = 墨黑底 + 暖纸底 + ≥3 个高饱和强调色;预设 经典 / 霓虹夜 / 薄荷糖 / 暮山红。
 - 字体:Noto Sans SC 900 + Space Mono。
 
-### 2. Anthropic 手绘极简 · `anthropic-sketch/`
+### 2. Anthropic 手绘极简 · `skills/anthropic-sketch/`
 
 ![Anthropic 手绘极简 预览](previews/anthropic-sketch.svg)
 
@@ -26,11 +26,27 @@
 - 扁平铁律:无阴影 / 渐变 / 3D(自检硬闸门)。
 - 字体:ZCOOL KuaiLe + Kalam + Noto Sans SC。
 
-## 每个 skill 的结构
+## 仓库结构
 
 ```
-<skill>/
+mengyi-design/
+├── .claude-plugin/
+│   └── marketplace.json          插件市场清单(可被 /plugin marketplace add 识别)
+├── skills/                       所有风格 skill 都在这里
+│   ├── mechanical-oracle/        电子梦呓
+│   └── anthropic-sketch/         Anthropic 手绘极简
+├── previews/                     README 用的风格预览图
+├── dist/                         打包好的 .skill(可手动导入)
+├── README.md
+└── LICENSE
+```
+
+每个 skill 内部:
+
+```
+skills/<skill>/
 ├── SKILL.md                      工作流入口:触发 / 决策表 / 工作流 / 自检 / 交接
+├── LICENSE.txt
 ├── references/
 │   ├── style-core.md             风格契约(色板/字体/质感/锚点)
 │   ├── illustration-prompts.md   AI 出图提示词(中+英)
@@ -45,9 +61,18 @@
 
 ## 安装与使用
 
-**安装(任选其一):**
-- 直接用 `dist/` 里的 `.skill` 包,在支持 Claude Skill 的客户端导入即可。
-- 或把 `mechanical-oracle/` 、`anthropic-sketch/` 文件夹放进 `~/.claude/skills/`。
+**方式一 · 作为 Claude Code 插件市场(推荐)**
+```
+/plugin marketplace add vc999999999/mengyi-design
+/plugin install mengyi-styles@mengyi-design
+```
+即可装上合集里的两套风格 skill(`mengyi-styles` 插件包含两者)。
+
+**方式二 · 手动放入 skills 目录**
+把 `skills/mechanical-oracle/`、`skills/anthropic-sketch/` 复制到 `~/.claude/skills/`。
+
+**方式三 · .skill 包**
+用 `dist/` 里的 `.skill`,在支持 Claude Skill 的客户端导入。
 
 **使用:** 安装后,跟 Claude 说「用电子梦呓风格把这篇做成长图」「用手绘极简做一套九宫格」即可;它会按工作流出 HTML 成品,并跑自检。
 
@@ -58,6 +83,12 @@
 ## 自检
 
 ```bash
-python <skill>/scripts/check_style.py 你的产出.html
+python skills/<skill>/scripts/check_style.py 你的产出.html
 ```
 有 `FAIL` 表示未达风格标准,改到全 `PASS` 再用。
+
+## 新增一套风格
+
+1. 在 `skills/` 下复制一个现有 skill 当骨架,改 `SKILL.md` + `references/style-core.md` + 三个模板 + `check_style.py`。
+2. 在 `.claude-plugin/marketplace.json` 的 `skills` 数组里加上 `"./skills/你的新风格"`。
+3. 给 README 配一张 `previews/` 预览图。
