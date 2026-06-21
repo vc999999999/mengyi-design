@@ -19,8 +19,7 @@
 <style>
   /* 换配色:改下面六个主色(预设见 references/style-core.md)。规则:墨黑底+暖纸底+≥3 高饱和强调色。
      霓虹夜 #0E0E18/#ECE6D6/#2348E0/#F7D108/#FF4D1A/#FF3D8B · 薄荷糖 #12130E/#EFE9D6/#1FA8C4/#F2C20B/#E5482A/#E85FA0 */
-  :root{--ink:#100E0C;--paper:#ECE0C4;--blue:#1B46D4;--yellow:#F5C20B;--red:#E5341D;--magenta:#E8356F;--dim:#7a6f59;
-    --cat:var(--blue);} /* 改:分类色 科普=blue 测评=red 教程=magenta */
+  :root{--ink:#100E0C;--paper:#ECE0C4;--blue:#1B46D4;--yellow:#F5C20B;--red:#E5341D;--magenta:#E8356F;--dim:#7a6f59;}
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:#3a342a;display:flex;justify-content:center;padding:30px;font-family:'Noto Sans SC',sans-serif;color:var(--ink);}
   .poster{position:relative;width:860px;background:var(--paper);overflow:hidden;border:3px solid var(--ink);}
@@ -37,7 +36,6 @@
   .frame{position:relative;border:3px solid var(--ink);background:var(--ink);overflow:hidden;}
   .frame svg.hero,.frame img.hero{display:block;width:100%;height:auto;filter:url(#warp);}
   .frame img.hero{aspect-ratio:820/420;object-fit:cover;}
-  .cat-tab{position:absolute;left:14px;top:14px;background:var(--cat);color:var(--paper);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.12em;padding:5px 11px;z-index:2;}
   .body{padding:26px 34px 8px;}
   .seclabel{display:flex;align-items:baseline;gap:12px;border-bottom:3px solid var(--ink);padding-bottom:10px;margin-bottom:18px;}
   .seclabel .n{font-family:'Space Mono',monospace;font-weight:700;font-size:12px;background:var(--ink);color:var(--paper);padding:4px 9px;}
@@ -65,7 +63,7 @@
 
   <!-- ① 刊头条 -->
   <div class="masthead">
-    <div class="top"><span>电子梦呓 / DIGITAL REVERIE</span><span>NO.012 · 科普</span></div> <!-- 改:期号+分类 -->
+    <div class="top"><span>电子梦呓 / DIGITAL REVERIE</span><span>NO.012</span></div> <!-- 改:期号 -->
     <!-- ③ 变异标题:.mut 套在你想变异的那一个字上 -->
     <div class="title">注意力<span class="mut">机</span><span class="hi">制</span></div> <!-- 改:标题 -->
     <div class="dek">把模型「往哪看」拟成一只圆滚滚的小机器人——这一期讲清注意力到底在算什么。</div> <!-- 改:导语 -->
@@ -74,7 +72,6 @@
   <!-- ④ 圆窗插画:可爱主角(默认 SVG;换 AI 图见顶部说明) -->
   <div class="opening">
     <div class="frame">
-      <span class="cat-tab">科普 · EXPLAIN</span> <!-- 改:分类标签 -->
       <svg class="hero" viewBox="0 0 820 420" xmlns="http://www.w3.org/2000/svg">
         <rect width="820" height="420" fill="#100E0C"/>
         <g opacity="0.4" stroke="#1f1b16" stroke-width="1"><path d="M0 70 H820 M0 140 H820 M0 210 H820 M0 280 H820 M0 350 H820"/><path d="M70 0 V420 M170 0 V420 M270 0 V420 M370 0 V420 M470 0 V420 M570 0 V420 M670 0 V420 M770 0 V420"/></g>

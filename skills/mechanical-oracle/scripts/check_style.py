@@ -7,7 +7,7 @@
 配色是「规则」不是固定 hex —— 锁的是丝网冲击力,允许整套换色:
 必须项(缺/违反 = FAIL,退出码非 0):
   有近黑墨色、有暖浅纸底、≥3 个高饱和强调色(丝网命脉)、两套字体(Noto Sans SC + Space Mono)、
-  warp 滤镜、纸张颗粒、半调网点、刊头条(电子梦呓)、分类色标、含一个字的变异标题。
+  warp 滤镜、纸张颗粒、半调网点、刊头条(电子梦呓)、含一个字的变异标题。
 软提示(WARN):变异处过多(>6,可能"处处都怪")、疑似瘆人词(与可爱契约冲突)。
 
 设计意图:给"出图质量"一个客观闸门;默认即品牌,换色只要守住「墨黑+暖纸+高饱和强调」即可。
@@ -64,7 +64,6 @@ def check(path):
     # 4 锚点
     for label, ok in [
         ("刊头条(电子梦呓)", "电子梦呓" in src),
-        ("分类色标", "cat-tab" in src or 'class="tab' in src or any(k in src for k in ("科普", "测评", "教程"))),
         ("插画位/孔洞", any(k in src for k in ("masc", "frame", "opening", "pic", "hero"))),
     ]:
         (oks if ok else fails).append(label + ("" if ok else " 缺失"))

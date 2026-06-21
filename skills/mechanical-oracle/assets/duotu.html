@@ -2,9 +2,9 @@
 <!--
   电子梦呓 · 多图版 / 轮播卡（每张 3:4,540×720,导出 2x = 1080×1440,小红书/公众号九宫格通用）
   === 用法（本模板专属，读到这里说明你要做多图版）===
-  1. 复制本文件 → 每张 <section class="card"> 改文字/分类色/标题变异字。
+  1. 复制本文件 → 每张 <section class="card"> 改文字/标题变异字。
   2. 张数：封面 1 张 + 内容 2~5 张 + 金句 1 张,常见 4~7 张。复制整块 <section class="card"> 增减。
-  3. 每张都要四锚点:迷你刊头条 + 分类色标 + 标题(只一个字变异) + 页码;封面那张额外放可爱主角。
+  3. 每张都要:迷你刊头条 + 标题(只一个字变异) + 页码;封面那张额外放可爱主角。
   4. 可爱主角:封面已内置 SVG 萌机器人;想换 AI 图,把 <svg class="masc"> 换成 <img class="masc" src="图.png">。
   5. 页码 NN/NN 全程一致更新。
   导出：浏览器打开 → 对每个 .card 截图(设 2x DPI);或打印 PDF 后拆页。
@@ -100,8 +100,7 @@
 <section class="card">
   <div class="grain"></div>
   <div class="bar"><span>电子梦呓</span><span>注意力机制</span></div>
-  <span class="tab" style="background:var(--blue);top:54px">科普 / EXPLAIN</span>
-  <div class="head" style="padding-top:86px"><div class="t">它在<span class="mut">算</span>什么</div><div class="line"></div></div> <!-- 改 -->
+  <div class="head"><div class="t">它在<span class="mut">算</span>什么</div><div class="line"></div></div> <!-- 改 -->
   <div class="pts">
     <div class="pt"><div class="dots" style="right:-14px;bottom:-14px"></div><div class="k">STEP 01</div><h3>打分</h3><p>每个词去问其余所有词:你跟我多相关?Q·K 点积得相似度。</p></div> <!-- 改 -->
     <div class="pt"><div class="k">STEP 02</div><h3>归一</h3><p>softmax 把分数压成一组和为 1 的权重,这就是「注意力」。</p></div>
@@ -114,8 +113,7 @@
 <section class="card">
   <div class="grain"></div>
   <div class="bar"><span>电子梦呓</span><span>注意力机制</span></div>
-  <span class="tab" style="background:var(--blue);top:54px">科普 / EXPLAIN</span>
-  <div class="head" style="padding-top:86px"><div class="t">为什么<span class="mut">强</span></div><div class="line"></div></div>
+  <div class="head"><div class="t">为什么<span class="mut">强</span></div><div class="line"></div></div>
   <div class="pts">
     <div class="pt"><div class="dots" style="right:-14px;bottom:-14px"></div><div class="k">VS RNN</div><h3>长程不丢</h3><p>RNN 一路传话、远词衰减;注意力让任意两词一步直连。</p></div>
     <div class="pt"><div class="k">VS CNN</div><h3>全局视野</h3><p>不受固定窗口限制,一眼看全句。</p></div>
@@ -128,8 +126,7 @@
 <section class="card">
   <div class="grain"></div>
   <div class="bar"><span>电子梦呓</span><span>注意力机制</span></div>
-  <span class="tab" style="background:var(--blue);top:54px">科普 / EXPLAIN</span>
-  <div class="head" style="padding-top:86px"><div class="t">一句话<span class="mut">记</span>住</div><div class="line"></div></div>
+  <div class="head"><div class="t">一句话<span class="mut">记</span>住</div><div class="line"></div></div>
   <div class="pts">
     <div class="pt"><div class="dots" style="right:-14px;bottom:-14px"></div><div class="k">TL;DR</div><h3>带权重的划重点</h3><p>模型不是读完全文,而是每个字都在问:我现在该看谁?</p></div>
   </div>
