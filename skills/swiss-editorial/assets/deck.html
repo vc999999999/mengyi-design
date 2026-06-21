@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+  杂志编辑 / 瑞士国际 · PPT / 幻灯片（16:9,每页一张 .slide,1280×720）
+  === 用法 ===
+  1. 复制本文件 → 每页改文字。加页:复制一整块 <section class="slide">。
+  2. 页型:封面 / 三栏编号 / 大数对照 / 金句。留白大、对齐网格、强调色只点睛。
+  3. 换强调色:改 :root 的 --accent。
+  导出 PPT:打印 →「横向」「无边距」「背景图形」开 → 存 PDF;或对每页截 PNG。
+  自检:python scripts/check_style.py 这个文件
+-->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Inter:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F3F1EB;--ink:#111111;--accent:#E2231A;--mute:rgba(17,17,17,.6);}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#d9d6ce;font-family:'Inter','Noto Sans SC',sans-serif;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:26px;padding:30px;}
+  .slide{position:relative;width:1280px;height:720px;background:var(--paper);padding:72px;flex:none;display:flex;flex-direction:column;}
+  .label{font-family:'Archivo',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:13px;}
+  .kicker{display:grid;grid-template-columns:1fr auto;align-items:end;padding-bottom:14px;border-bottom:2px solid var(--ink);}
+  .kicker .r{color:var(--mute)}
+
+  .cover h1{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:900;font-size:118px;line-height:1.0;letter-spacing:-0.02em;margin-top:auto;}
+  .cover h1 em{font-style:normal;color:var(--accent)}
+  .cover .sub{font-size:24px;line-height:1.6;color:var(--mute);margin-top:26px;max-width:780px;}
+
+  .head h2{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:900;font-size:60px;letter-spacing:-0.01em;margin-bottom:8px;}
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;}
+  .cell{border-top:2px solid var(--ink);padding:20px 24px 0 0;}
+  .cell .no{font-family:'Archivo',sans-serif;font-weight:900;font-size:56px;line-height:1}
+  .cell.accent .no{color:var(--accent)}
+  .cell h3{font-size:24px;font-weight:700;margin:16px 0 10px}
+  .cell p{font-size:17px;line-height:1.7;color:var(--mute)}
+
+  .split{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;height:100%;}
+  .split .big{font-family:'Archivo',sans-serif;font-weight:900;font-size:300px;line-height:.78;color:var(--accent)}
+  .split h2{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:800;font-size:52px;line-height:1.1;margin-bottom:20px}
+  .split p{font-size:21px;line-height:1.75;color:var(--mute);max-width:560px}
+
+  .quote{display:flex;align-items:center;height:100%;}
+  .quote .q{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:800;font-size:66px;line-height:1.14;letter-spacing:-0.01em}
+  .quote .q em{font-style:normal;color:var(--accent)}
+
+  .foot{margin-top:auto;display:grid;grid-template-columns:1fr auto;border-top:2px solid var(--ink);padding-top:12px;color:var(--mute)}
+  @media print{@page{size:1280px 720px;margin:0}body{background:#fff;gap:0;padding:0}.slide{page-break-after:always;break-after:page}}
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<section class="slide cover">
+  <div class="kicker"><span class="label">深度解读 / DEEP DIVE</span><span class="label r">ISSUE 01 · 2026</span></div>
+  <h1>不是模板,<br>是一台<em>技能工厂</em></h1>
+  <div class="sub">一个好 skill 不是写出来的,是测出来的。</div>
+  <div class="foot"><span class="label">MENGYI DESIGN · 编辑风</span><span class="label">01</span></div>
+</section>
+
+<!-- 三栏编号 -->
+<section class="slide">
+  <div class="kicker"><span class="label">三个支点 / THREE PILLARS</span><span class="label r">02</span></div>
+  <div class="head"><h2 style="margin-top:36px">它凭什么更可靠</h2></div>
+  <div class="cols">
+    <div class="cell accent"><div class="no">01</div><h3>Baseline 对照</h3><p>有 skill / 无 skill 两组对跑,证明它真比裸模型好。</p></div>
+    <div class="cell"><div class="no">02</div><h3>人类审阅</h3><p>把输出、评分、反馈汇到一页,人的判断进流程。</p></div>
+    <div class="cell"><div class="no">03</div><h3>触发优化</h3><p>把 description 的"该不该触发"也做成可测试任务。</p></div>
+  </div>
+  <div class="foot"><span class="label">MENGYI DESIGN</span><span class="label">02</span></div>
+</section>
+
+<!-- 大数对照 -->
+<section class="slide">
+  <div class="split">
+    <div class="big">2×</div>
+    <div>
+      <h2>每个测试<br>都跑两组</h2>
+      <p>with_skill 与 without_skill 并行。看起来很有道理的提示词,可能只是让模型读了更多字、跑得更慢。baseline 把这种自我安慰打掉。</p>
+    </div>
+  </div>
+  <div class="foot"><span class="label">MENGYI DESIGN</span><span class="label">03</span></div>
+</section>
+
+<!-- 金句 -->
+<section class="slide">
+  <div class="kicker"><span class="label">结语 / CODA</span><span class="label r">04</span></div>
+  <div class="quote"><div class="q">写 skill 不难。难的是知道它<br><em>何时该触发,触发后有没有用。</em></div></div>
+  <div class="foot"><span class="label">MENGYI DESIGN</span><span class="label">04</span></div>
+</section>
+
+</body>
+</html>

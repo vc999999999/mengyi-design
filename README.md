@@ -26,6 +26,15 @@
 - 扁平铁律:无阴影 / 渐变 / 3D(自检硬闸门)。
 - 字体:ZCOOL KuaiLe + Kalam + Noto Sans SC。
 
+### 3. 瑞士国际编辑风 · `skills/swiss-editorial/`
+
+![瑞士国际编辑风 预览](previews/swiss-editorial.svg)
+
+严格网格 × 极致留白 × 超大无衬线标题 × 单一强调色 × 细分割线,理性克制的国际主义编排,适合严肃长文题图。
+- 配色可换:规则 = 纸白底 + 近黑文字 + **至多一个**强调色;预设 瑞士红 / 克莱因蓝 / 国际橙 / 墨绿。
+- 扁平铁律:无阴影 / 渐变 / 3D(自检硬闸门)。
+- 字体:Archivo + Inter + Noto Sans SC。
+
 ## 仓库结构
 
 ```
@@ -34,7 +43,8 @@ mengyi-design/
 │   └── marketplace.json          插件市场清单(可被 /plugin marketplace add 识别)
 ├── skills/                       所有风格 skill 都在这里
 │   ├── mechanical-oracle/        电子梦呓
-│   └── anthropic-sketch/         Anthropic 手绘极简
+│   ├── anthropic-sketch/         Anthropic 手绘极简
+│   └── swiss-editorial/          瑞士国际编辑风
 ├── previews/                     README 用的风格预览图
 ├── dist/                         打包好的 .skill(可手动导入)
 ├── README.md

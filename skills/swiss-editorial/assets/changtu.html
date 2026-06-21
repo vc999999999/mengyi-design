@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+  杂志编辑 / 瑞士国际 · 长图版（竖向单图,宽 880,高度随内容）
+  === 用法（本模板专属,读到这里说明你要做长图版）===
+  1. 复制本文件 → 只改带「改:」的地方;别动网格/字体/留白/单一强调色/扁平结构。
+  2. 结构 = 眉标条 → 超大标题(一个词点强调色)+ 规则线 → 导语 → 编号要点(网格)→ 几何构成 → 金句 → 页脚 meta。
+  3. 强调色只点睛:换 :root 的 --accent 即可(预设见 style-core.md)。留白要敢留,元素全对齐网格。
+  导出:浏览器打开 → 打印 PDF(无边距),或对 .page 截长图 PNG(2x DPI)。
+  自检:python scripts/check_style.py 这个文件
+-->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Inter:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* 换强调色:只改 --accent(预设见 style-core.md:瑞士红 / 克莱因蓝 / 国际橙 / 墨绿,只用一个) */
+  :root{--paper:#F3F1EB;--ink:#111111;--accent:#E2231A;--mute:rgba(17,17,17,.6);}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#d9d6ce;display:flex;justify-content:center;padding:30px;font-family:'Inter','Noto Sans SC',sans-serif;color:var(--ink);}
+  .page{width:880px;background:var(--paper);padding:56px 56px 40px;}
+  .disp{font-family:'Archivo','Noto Sans SC',sans-serif;}
+  .label{font-family:'Archivo',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:12px;}
+  .hr{border-top:2px solid var(--ink);}
+  .hair{border-top:1.5px solid var(--ink);}
+
+  /* 眉标条 */
+  .kicker{display:grid;grid-template-columns:1fr auto;align-items:end;padding-bottom:12px;}
+  .kicker .r{color:var(--mute)}
+  /* 大标题 */
+  .headline{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:900;font-size:78px;line-height:1.02;letter-spacing:-0.01em;margin:26px 0 22px;}
+  .headline em{font-style:normal;color:var(--accent);}
+  /* 导语:不对称网格 */
+  .lead{display:grid;grid-template-columns:2fr 5fr;gap:24px;padding:22px 0 0;}
+  .lead .t{font-size:19px;line-height:1.65;}
+  .lead .t b{font-weight:700}
+
+  /* 编号要点 */
+  .sec-label{display:flex;justify-content:space-between;align-items:baseline;margin:48px 0 0;padding-bottom:10px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .cell{border-top:2px solid var(--ink);padding:16px 18px 22px 0;}
+  .cell .no{font-family:'Archivo',sans-serif;font-weight:900;font-size:40px;line-height:1;}
+  .cell h3{font-size:18px;font-weight:700;margin:12px 0 8px;}
+  .cell p{font-size:14.5px;line-height:1.7;color:var(--mute);}
+  .cell.accent .no{color:var(--accent)}
+
+  /* 几何构成 */
+  .figure{border:2px solid var(--ink);margin-top:44px;height:260px;position:relative;overflow:hidden;}
+  .figure .cap{position:absolute;left:16px;bottom:12px;color:var(--mute);}
+
+  /* 金句 */
+  .quote{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:800;font-size:40px;line-height:1.18;margin:48px 0 0;letter-spacing:-0.01em;}
+  .quote em{font-style:normal;color:var(--accent)}
+
+  /* 页脚 */
+  .foot{display:grid;grid-template-columns:1fr auto;margin-top:44px;padding-top:12px;color:var(--mute);}
+  @media print{@page{margin:0}body{background:#fff;padding:0}.page{width:100%}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ① 眉标条 -->
+  <div class="kicker hair" style="border-top:none">
+    <span class="label">深度解读 / DEEP DIVE</span> <!-- 改:栏目 -->
+    <span class="label r">ISSUE 01 · 2026</span> <!-- 改:期号/日期 -->
+  </div>
+  <div class="hr"></div>
+
+  <!-- ② 大标题 + 规则线(一个词点强调色) -->
+  <h1 class="headline">不是模板,<br>是一台<em>技能工厂</em></h1> <!-- 改:标题 -->
+  <div class="hr"></div>
+
+  <!-- ③ 导语 -->
+  <div class="lead">
+    <span class="label">摘要<br>ABSTRACT</span>
+    <div class="t"><b>一个好 skill 不是写出来的,是测出来的。</b>Anthropic 的 skill-creator 把"凭感觉写提示词"推进成一条可运行的研发流水线:写草稿、跑测试、对比 baseline、让人审阅、量化评分,再把反馈喂回下一轮。</div> <!-- 改:导语 -->
+  </div>
+
+  <!-- ④ 编号要点 -->
+  <div class="sec-label"><span class="label">三个支点 / THREE PILLARS</span><span class="label" style="color:var(--mute)">01—03</span></div>
+  <div class="grid3">
+    <div class="cell accent"><div class="no">01</div><h3>Baseline 对照</h3><p>每个测试都跑"有 skill / 无 skill"两组,逼你回答:它到底比裸模型更好吗?</p></div> <!-- 改 -->
+    <div class="cell"><div class="no">02</div><h3>人类审阅</h3><p>eval-viewer 把输出、评分、上轮反馈汇到一页,把人的判断做成流程节点。</p></div>
+    <div class="cell"><div class="no">03</div><h3>触发优化</h3><p>description 决定"有没有机会被用上";它把触发也做成可测试的任务。</p></div>
+  </div>
+
+  <!-- ⑤ 几何构成(瑞士风) -->
+  <div class="figure">
+    <svg width="100%" height="100%" viewBox="0 0 880 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="130" r="104" fill="#E2231A"/>
+      <rect x="250" y="26" width="360" height="208" fill="#111111"/>
+      <rect x="470" y="80" width="120" height="120" fill="#F3F1EB"/>
+      <line x1="0" y1="130" x2="880" y2="130" stroke="#111" stroke-width="2"/>
+    </svg>
+    <span class="cap label">FIG.01 — INPUT → TEST → IMPROVE</span>
+  </div>
+
+  <!-- ⑥ 金句 -->
+  <div class="quote">写 skill 不难。难的是知道它<em>何时该触发、触发后有没有用</em>。</div> <!-- 改:金句 -->
+
+  <!-- ⑦ 页脚 -->
+  <div class="foot hr">
+    <span class="label">MENGYI DESIGN · 编辑风</span>
+    <span class="label">P. 01</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+  杂志编辑 / 瑞士国际 · 多图版 / 轮播卡（每张 3:4,540×720,导出 2x = 1080×1440）
+  === 用法 ===
+  1. 复制本文件 → 每张 <section class="card"> 改文字。封面 1 + 内容 2~5 + 金句 1,常见 4~7 张。
+  2. 每张:眉标 + 页码 + 一个核心(封面=大标题/内容=编号要点/金句=大字)。留白要大,元素对齐。
+  3. 强调色只点睛,换 :root 的 --accent。
+  导出:对每个 .card 截图(2x DPI)。 自检:python scripts/check_style.py 这个文件
+-->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Inter:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F3F1EB;--ink:#111111;--accent:#E2231A;--mute:rgba(17,17,17,.6);}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#d9d6ce;font-family:'Inter','Noto Sans SC',sans-serif;color:var(--ink);display:flex;flex-wrap:wrap;gap:24px;justify-content:center;padding:30px;}
+  .card{position:relative;width:540px;height:720px;background:var(--paper);padding:48px 44px;flex:none;display:flex;flex-direction:column;}
+  .label{font-family:'Archivo',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:11px;}
+  .kicker{display:grid;grid-template-columns:1fr auto;align-items:end;padding-bottom:10px;border-bottom:2px solid var(--ink);}
+  .kicker .r{color:var(--mute)}
+
+  /* 封面 */
+  .h{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:900;font-size:62px;line-height:1.04;letter-spacing:-0.01em;margin-top:auto;}
+  .h em{font-style:normal;color:var(--accent)}
+  .sub{font-size:16px;line-height:1.65;color:var(--mute);margin-top:20px;border-top:1.5px solid var(--ink);padding-top:16px;}
+
+  /* 内容 */
+  .no{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.8;margin-top:14px;}
+  .no.accent{color:var(--accent)}
+  .ch{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:800;font-size:36px;line-height:1.1;margin-top:24px;}
+  .cp{font-size:17px;line-height:1.7;color:var(--mute);margin-top:16px;border-top:1.5px solid var(--ink);padding-top:16px;}
+
+  /* 金句 */
+  .q{font-family:'Archivo','Noto Sans SC',sans-serif;font-weight:800;font-size:46px;line-height:1.16;margin-top:auto;letter-spacing:-0.01em;}
+  .q em{font-style:normal;color:var(--accent)}
+
+  .foot{margin-top:auto;display:grid;grid-template-columns:1fr auto;border-top:2px solid var(--ink);padding-top:10px;color:var(--mute);}
+  .page{position:absolute;right:44px;top:48px;}
+  @media print{@page{size:540px 720px;margin:0}body{background:#fff;gap:0;padding:0}.card{page-break-after:always;break-after:page}}
+</style>
+</head>
+<body>
+
+<!-- ① 封面 -->
+<section class="card">
+  <div class="kicker"><span class="label">深度解读 / DEEP DIVE</span><span class="label r">01 / 04</span></div>
+  <div class="h">不是模板,<br>是一台<em>技能工厂</em></div> <!-- 改:大标题 -->
+  <div class="sub">一个好 skill 不是写出来的,是测出来的。</div> <!-- 改 -->
+  <div class="foot"><span class="label">MENGYI DESIGN</span><span class="label">ISSUE 01</span></div>
+</section>
+
+<!-- ② 内容 -->
+<section class="card">
+  <div class="kicker"><span class="label">支点 / PILLAR</span><span class="label r">02 / 04</span></div>
+  <div class="no accent">01</div> <!-- 改:编号 -->
+  <div class="ch">Baseline 对照</div> <!-- 改 -->
+  <div class="cp">每个测试都跑"有 skill / 无 skill"两组,逼你回答一个尴尬问题:它到底比裸模型更好吗?</div> <!-- 改 -->
+  <div class="foot"><span class="label">MENGYI DESIGN</span><span class="label">P.02</span></div>
+</section>
+
+<!-- ③ 内容 -->
+<section class="card">
+  <div class="kicker"><span class="label">支点 / PILLAR</span><span class="label r">03 / 04</span></div>
+  <div class="no">02</div>
+  <div class="ch">人类审阅<br>接入循环</div>
+  <div class="cp">eval-viewer 把输出、评分、上一轮反馈汇到同一页,把"人的判断"做成流程里的一个节点,而不是假装全自动。</div>
+  <div class="foot"><span class="label">MENGYI DESIGN</span><span class="label">P.03</span></div>
+</section>
+
+<!-- ④ 金句 -->
+<section class="card">
+  <div class="kicker"><span class="label">结语 / CODA</span><span class="label r">04 / 04</span></div>
+  <div class="q">难的是知道它<em>何时该触发</em>,触发后有没有用。</div> <!-- 改:金句 -->
+  <div class="foot"><span class="label">MENGYI DESIGN</span><span class="label">END</span></div>
+</section>
+
+</body>
+</html>

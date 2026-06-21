@@ -10,12 +10,13 @@
   "plugins": [
     {
       "name": "mengyi-styles",
-      "description": "梦呓设计风格合集:电子梦呓(复古丝网 × 可爱机械)+ Anthropic 手绘极简(Excalidraw 白板手绘)。把内容套进固定风格,产出长图/多图/PPT/插图/视频提示词。",
+      "description": "梦呓设计风格合集:电子梦呓(复古丝网 × 可爱机械)+ Anthropic 手绘极简(Excalidraw 白板手绘)+ 瑞士国际编辑风(网格 × 留白 × 单色)。把内容套进固定风格,产出长图/多图/PPT/插图/文章插画/视频提示词。",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/mechanical-oracle",
-        "./skills/anthropic-sketch"
+        "./skills/anthropic-sketch",
+        "./skills/swiss-editorial"
       ]
     }
   ]
